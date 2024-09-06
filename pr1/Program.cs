@@ -24,6 +24,16 @@ namespace pr1
             kangaroo.GetInfo();
             Console.WriteLine("\n\n3 Завдання");
 
+            Rectangle rectangle = new Rectangle(5, 10);
+            Circle circle = new Circle(7);
+            RightTriangle triangle = new RightTriangle(6, 8);
+            Trapezoid trapezoid = new Trapezoid(4, 6, 5);
+
+
+            Console.WriteLine(rectangle.ToString());
+            Console.WriteLine(circle.ToString());
+            Console.WriteLine(triangle.ToString());
+            Console.WriteLine(trapezoid.ToString());
 
         }
     }
