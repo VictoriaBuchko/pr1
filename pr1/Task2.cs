@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace pr1
         public class Animal
         {
             public string Name { get; set; }
-            public double Weight { get; set; }
+            public double Weight;
             public bool IsPredator { get; set; } 
 
             public Animal(string name, double weight, bool isPredator)
@@ -21,9 +22,24 @@ namespace pr1
                 IsPredator = isPredator;
             }
 
-            public virtual void GetInfo()
+            public double SetWeight
             {
-                Console.WriteLine($"Тварина: {Name},\n Вага: {Weight} кг,\n Хижак: {(IsPredator ? "Так" : "Ні")}");
+                get { return Weight; }
+                set
+                {
+                    if (value <= 0)
+                    {
+                        Console.WriteLine("Значення не може бути менше 0");
+                    }
+                    else
+                    {
+                        Weight = value;
+                    }
+                }
+            }
+            public override string ToString()
+            {
+                return $"Тварина: {Name},\n Вага: {Weight} kg,\n Хижак: {(IsPredator ? "Yes" : "No")}";
             }
         }
 
@@ -36,27 +52,41 @@ namespace pr1
             {
                 StripePattern = stripePattern;
             }
-            public override void GetInfo()
+            public override string ToString()
             {
-                base.GetInfo();
-                Console.WriteLine($"Тип смуг: {StripePattern}");
+                return $"{base.ToString()},\n Забарвлення {StripePattern}";
             }
         }
 
 
         public class Crocodile : Animal
         {
-            public double Length { get; set; } 
+            public double Length; 
 
             public Crocodile(string name, double weight, bool isPredator, double length)
-                : base(name, weight, isPredator)
+               : base(name, weight, isPredator)
             {
                 Length = length;
             }
-            public override void GetInfo()
+            public double SetLength
             {
-                base.GetInfo();
-                Console.WriteLine($"Довжина: {Length} метрів");
+                get { return Length; }
+                set
+                {
+                    if (value <= 0)
+                    {
+                        Console.WriteLine("Значення не може бути менше 0");
+                    }
+                    else
+                    {
+                        Length = value;
+                    }
+                }
+            }
+         
+            public override string ToString()
+            {
+                return $"{base.ToString()},\n Довжина {Length} метрів";
             }
         }
 
@@ -71,11 +101,24 @@ namespace pr1
             {
                 JumpDistance = jumpDistance;
             }
-
-            public override void GetInfo()
+            public int SetJumpDistance
             {
-                base.GetInfo();
-                Console.WriteLine($"Довжина стрибка: {JumpDistance} метрів");
+                get { return JumpDistance; }
+                set
+                {
+                    if (value <= 0)
+                    {
+                        Console.WriteLine("Значення не може бути менше 0");
+                    }
+                    else
+                    {
+                        JumpDistance = value;
+                    }
+                }
+            }
+            public override string ToString()
+            {
+                return $"{base.ToString()},\n Стрибок {JumpDistance} метрів";
             }
         }
     }

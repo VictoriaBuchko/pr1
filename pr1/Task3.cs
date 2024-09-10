@@ -12,26 +12,52 @@ namespace pr1
 
         public override string ToString()
         {
-            return $"Figure with area: {CalculateArea():F2}";
+            return $"Плоша фігури: {CalculateArea():F2}";
         }
 
-
-        public override int GetHashCode()
-        {
-            return CalculateArea().GetHashCode();
-        }
     }
 
     public class Rectangle : Figure
     {
-        public double Width { get; set; }
-        public double Height { get; set; }
-
+        public double Width; 
+        public double Height;
         public Rectangle(double width, double height)
         {
             Width = width;
             Height = height;
         }
+        public double SetWidth
+        {
+            get { return Width; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Width = value;
+                }
+            }
+        }
+
+        public double SetHeight
+        {
+            get { return Height; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Height = value;
+                }
+            }
+        }
+        
 
         public override double CalculateArea()
         {
@@ -40,19 +66,34 @@ namespace pr1
 
         public override string ToString()
         {
-            return $"Rectangle: Width = {Width}, Height = {Height}, Area = {CalculateArea():F2}";
+            return $"Квадрат: Ширина = {Width}, Висота = {Height}, Площа = {CalculateArea():F2}";
         }
     }
 
     public class Circle : Figure
     {
-        public double Radius { get; set; }
+        public double Radius;
 
         public Circle(double radius)
         {
             Radius = radius;
         }
 
+        public double SetRadius
+        {
+            get { return Radius; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Radius = value;
+                }
+            }
+        }
         public override double CalculateArea()
         {
             return Math.PI * Radius * Radius;
@@ -60,7 +101,7 @@ namespace pr1
 
         public override string ToString()
         {
-            return $"Circle: Radius = {Radius}, Area = {CalculateArea():F2}";
+            return $"Круг: Радіус = {Radius}, Площа = {CalculateArea():F2}";
         }
     }
 
@@ -74,7 +115,37 @@ namespace pr1
             Base = @base;
             Height = height;
         }
+        public double SetBase
+        {
+            get { return Base; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Base = value;
+                }
+            }
+        }
 
+        public double SetHeight
+        {
+            get { return Height; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Height = value;
+                }
+            }
+        }
         public override double CalculateArea()
         {
             return 0.5 * Base * Height;
@@ -82,7 +153,7 @@ namespace pr1
 
         public override string ToString()
         {
-            return $"RightTriangle: Base = {Base}, Height = {Height}, Area = {CalculateArea():F2}";
+            return $"Правильний трикутник: Основа = {Base}, Висота = {Height}, Площа = {CalculateArea():F2}";
         }
     }
 
@@ -99,6 +170,53 @@ namespace pr1
             Height = height;
         }
 
+        public double SetSide1
+        {
+            get { return Side1; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Side1 = value;
+                }
+            }
+        }
+
+        public double SetSide2
+        {
+            get { return Side2; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Side2 = value;
+                }
+            }
+        }
+
+        public double SetHeight
+        {
+            get { return Height; }
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Значення не може бути менше 0");
+                }
+                else
+                {
+                    Height = value;
+                }
+            }
+        }
         public override double CalculateArea()
         {
             return 0.5 * (Side1 + Side2) * Height;
@@ -106,7 +224,7 @@ namespace pr1
 
         public override string ToString()
         {
-            return $"Trapezoid: Side1 = {Side1}, Side2 = {Side2}, Height = {Height}, Area = {CalculateArea():F2}";
+            return $"Трапеція: Основа перша = {Side1}, Основа друга = {Side2}, Висота = {Height}, Площа = {CalculateArea():F2}";
         }
     }
 }
